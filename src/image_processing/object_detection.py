@@ -1,3 +1,11 @@
+"""
+@brief
+This module implements a simple object detection pipeline using Faster R-CNN model. 
+
+@author: Dhruv Parikh
+@date: 2024-11-03
+"""
+
 import torch
 import numpy as np
 import cv2

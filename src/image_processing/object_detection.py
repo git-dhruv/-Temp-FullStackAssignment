@@ -35,7 +35,7 @@ def detect_object(img_path : str = "") -> Dict[str, List[Union[str, np.ndarray]]
     category_names_from_coco_dataset = []
     with open(r'cfgs/category_names.json') as f:
         data = json.load(f)
-        category_names_from_coco_dataset = data["COCO_INSTANCE_CATEGORY_NAMES"]
+        category_names_from_coco_dataset = data["category_names"]
         valid_grocery_label = data["filtered_list"]
 
     # Image Preprocessing

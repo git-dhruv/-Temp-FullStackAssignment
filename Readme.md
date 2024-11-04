@@ -18,6 +18,9 @@ You can run different parts of the project using the following command format:
 - Part 1: Object Detection
 ```python .\src\main.py 1 assets\data\shelf-2635275_1280.jpg```
 
+- Part 2: Backend API
+```python .\src\main.py 2```
+
 - Part 3: AR
 ```python .\src\main.py 3 assets\data\shelf-2635275_1280.jpg```
 
@@ -27,7 +30,9 @@ Images are located in `assets\data`. Configurations are located in `cfgs`
 
 ## About
 
-The project implements object detection using FasterRCNN, processes the output and then overlays bounding box and labels on it. On top of this, a gif animation was added to increase scope. The aim was to keep the codebase simple and stateless while fulfilling the project requirements.
+The project implements object detection using FasterRCNN, processes the output and then overlays bounding box and labels on it. On top of this, a gif animation was added to increase scope. The aim was to keep the codebase simple and stateless while fulfilling the project requirements. For Part 2 please read `src\flask_app\Readme.md`. 
+
+Note: This code was tested on Linux. There are problems parsing curl request using Powershell and I didn't investigated it further. 
 
 ### Design
 - The project is split into 2 modules, augmented reality and object detection.

@@ -7,8 +7,16 @@ Utils File for Image Manipulation
 
 import imageio
 import cv2
-from typing import List, Tuple
+from typing import List, Tuple, Any
+from copy import deepcopy
 from numpy import ndarray
+
+def deepcopy_first_input(func):
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
+        copied_first_arg = deepcopy(args[0])
+        return func(copied_first_arg, *args[1:], **kwargs)
+    return wrapper
+
 
 def load_gif(filename: str)->List[ndarray]:
     """
@@ -30,6 +38,7 @@ def load_gif(filename: str)->List[ndarray]:
         frames.append(frame)
     return frames
 
+@deepcopy_first_input
 def overlay_images(background: ndarray, overlay: ndarray, position: Tuple[int, int] = (0, 0)) -> ndarray:
     """
     Overlays `overlay` onto `background` img at position

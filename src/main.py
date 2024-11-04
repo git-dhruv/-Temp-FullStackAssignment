@@ -1,9 +1,12 @@
 from image_processing.augmented_reality import run_ar_pipeline_for_single_img
 from image_processing.object_detection import detect_object
+from flask_app.run import app as flask_app
+
+import os
 import fire
 
 
-def main(part: int, img_path: str) -> None:
+def main(part: int, img_path: str = "") -> None:
     """
     Main entry point for the command-line interface.
 
@@ -17,6 +20,9 @@ def main(part: int, img_path: str) -> None:
         print("--- Running Part 1: Object Detection ---")
         output = detect_object(img_path)
         print("Detection output:", output)
+    elif part == 2:
+        print("--- Running Part 2: Backend API ---")
+        flask_app.run(host="0.0.0.0", port=int(os.getenv("PORT", "5001")), threaded=True)
     elif part == 3:
         print("--- Running Part 3: AR Pipeline ---")
         run_ar_pipeline_for_single_img(img_path)
